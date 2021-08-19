@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+<p>Проект: {{connection.name_project.name_project}}</p>
+<p>Компания: {{company}}</p>
+<p>Вид обращения: {% if connection.reference == 'c' %}call{% else %}letter{% endif %}</p>
+<p>Описания взаимодействия:</p>
+<p>{{connection.descrip_connection}}</p>
+<p>Оценка взаимодействия: {% if connection.mark == 'l' %}like{% else %}dislike{% endif %}</p>
+<p>Менеджер, который совершал взаимодействие: {{connection.user}}</p>
+<p>Создание записи: {{connection.created_at}}</p>
+{% if connection.user == user %}<button onclick="location.href='update/'">Редактировать взаимодействие</button>{% endif %}
+<script type="text/javascript">
+    CKEDITOR.config.autoParagraph = false;
+</script>
+{% endblock content %}

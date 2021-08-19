@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Projects{% endblock title %}
+
+{% block content %}
+    <h1>Projects</h1>
+    {% for project in project_list %}
+        <ul>
+            <li><a href="/company/project/{{project.pk}}">{{project.name_project}}</a>   {{project.company}}</li>
+        </ul>
+    {% endfor %}
+    {% include "paginate.html" %}
+    {% if user.is_staff %}<button onclick="window.location='create/'">Создать проект</button>{% endif %}
+{% endblock content %}

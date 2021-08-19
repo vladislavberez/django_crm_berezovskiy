@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} {{project.name_project}} {% endblock title %}
+
+{% block content %}
+{% if user.is_staff %}
+    <h4>Название проекта: {{project.name_project}}</h4>
+    <p><b>Компания:</b> {{project.company}}</p>
+    <p><b>Описание:</b></p>
+    <p>{{project.project_description}}</p>
+    <p><b>Дата начала:</b> {{project.start_date}}</p>
+    <p><b>Дата окончания:</b> {{project.deadline}}</p>
+    <p><b>Стоимость:</b> {{project.price}} &#8372</p>
+    <button onclick="window.location='{{project.get_absolute_url}}/update/'">Редактировать проект</button>
+{% else %}
+    <h4>Название проекта: {{project.name_project}}</h4>
+    <p><b>Компания:</b> {{project.company}}</p>
+    <p><b>Описание:</b></p>
+    <p>{{project.project_description}}</p>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %} Connection {% endblock title %}
+{% block content %}
+<h1>Connection List</h1>
+{% for connection in connection_list %}
+  <p>{{ connection.created_at }} <a href="{{connection.get_absolute_url}}"> {{connection}}</a></p>
+{% endfor %}
+<button onclick="location.href='create/'">Создать взаимодействие</button>
+{% endblock content %}

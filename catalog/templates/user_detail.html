@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}O {{user}} {% endblock title %}
+{% block content %}
+    <p>{{user.username}}</p>
+    <p>{{user.email}}</p>
+    <p>First name: {{user.first_name}}</p>
+    <p>Last name: {{user.last_name}}</p>
+    <p><img src="{{user.photo.url}}"></p>
+    <button onclick="location.href='update/'">Редактировать профиль</button>
+
+{% endblock content %}

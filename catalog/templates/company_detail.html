@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %} {{company}} {% endblock title %}
+{% block content %}
+  {% if user.is_staff %}
+    <h4>Название компании: {{company}}</h4>
+    <p><b>Директор:</b> {{company.full_name}}</p>
+    <p><b>Описание:</b></p>
+    <p>{{company.description}}</p>
+    <p><b>Дата создания поста:</b> {{company.created_at}}</p>
+    <p><b>Дата обновления поста:</b> {{company.updated_at}}</p>
+    <p><b>Адресс:</b> {{company.address}}</p>
+    {% if managerphone or manageremail %}
+      <h4>Контакты менеджеров компании:</h4>
+    {% else %}
+      <p>Контакты менеджеров отсутствуют</p>
+    {% endif %}
+    {% if managerphone %}
+      <li> Телефоны:
+      {% for item in managerphone %}
+        <ul>{{item}}</ul>
+      {% endfor %}
+      </li>
+    {% endif %}
+    {% if manageremail %}
+      <li> Электронная почта:
+        {% for item in manageremail %}
+          <ul>{{item}}</ul>
+        {% endfor %}
+      </li>
+    {% endif %}
+    {% if projects %}<h4>Проекты:</h4>
+      {% for project in projects %}
+        <ul><a href="{{project.get_absolute_url}}">{{project.name_project}}</a></ul>
+      {% endfor %}
+    {% endif %}
+    <button onclick="location.href='update/'">Редактировать компанию</button>
+  {% else %}
+    <h4>Название компании: {{company}}</h4>
+    <p><b>Описание:</b></p>
+    <p>{{company.description}}</p>
+  {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Список компаний{% endblock title %}
+{% block content %}
+  <h1>Company List</h1>
+    <p>Сортировка: <a href="?sort=name_company">По алфавиту</a>  <a href="?sort=-created_at">Дата создания(сначала новое)</a> <a href="?sort=-name_company">Обратно алфавиту</a> <a href="?sort=created_at">Дата создания(сначала старое)</a></p>
+    {% if company_list %}
+        <ul>
+            {% for company in company_list %}
+                <li>
+                    <a href="{{ company.get_absolute_url }}">{{ company }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no companies in the crm.</p>
+    {% endif %}
+  {% include "paginate.html" %}
+  {% if user.is_staff %}<button onclick="window.location='create/'">Создать компанию</button>{% endif %}
+{% endblock content %}
