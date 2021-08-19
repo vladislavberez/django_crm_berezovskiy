@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # Text backup files
-*.bak
+.bak
 
 #Database
-*.sqlite3
+.sqlite3
