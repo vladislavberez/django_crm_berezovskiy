@@ -1,1 +1,1 @@
-web: gunicorn crm_berezovskiy.wsgi --log-file -
+web: gunicorn crm.wsgi --log-file -
